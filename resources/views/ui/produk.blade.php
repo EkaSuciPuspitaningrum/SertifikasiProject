@@ -1,4 +1,3 @@
-<hr>
 <br><br>
 <h1 style="text-align: center" class="display-6">Produk</h1>
 <br>

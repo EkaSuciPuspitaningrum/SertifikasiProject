@@ -67,20 +67,20 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li> --}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#produk">Produk</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Produk</a>
+                        <a class="nav-link" href="#harga">Daftar Harga</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Daftar Harga</a>
+                        <a class="nav-link" href="#tentang">Tentang Kami</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tentang Kami</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pesan Kamar</a>
+                        <a class="nav-link" href="#pesan">Pesan Kamar</a>
                     </li>
                 </ul>
             </div>
@@ -104,15 +104,43 @@
     </div>
     
     <main class="container">
-        @include('ui.produk')
+        <div class="produk" id="produk">
+            @include('ui.produk')
+        </div>
         <br><br>
-        @include('ui.harga')
+        <div class="harga" id="harga">
+            @include('ui.harga')
+        </div>
         <br><br>
-        @include('ui.tentang')
+        <div class="tentang" id="tentang">
+            @include('ui.tentang')
+        </div>
         <br><br>
-        @include('ui.pesan')
+        <div class="pesan" id="pesan">
+            @include('ui.pesan')
+        </div>
+        <br><br>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('a.nav-link').on('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+    
+                    var hash = this.hash;
+    
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function(){
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
